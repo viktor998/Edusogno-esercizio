@@ -21,5 +21,7 @@
         <input type="checkbox" id="isAdmin" name="isAdmin" value="1"><br>
         <button type="submit">Register</button>
     </form>
+    <p><a href="user_login.php">Login as User</a></p>
+    <p><a href="Admin_login.php">Login as Admin</a></p>
 </body>
 </html>

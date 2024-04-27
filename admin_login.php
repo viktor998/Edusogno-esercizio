@@ -1,3 +1,31 @@
+<?php
+session_start(); // Start session
+
+include 'config.php'; // Include database configuration
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = mysqli_real_escape_string($conn, $_POST["email"]);
+    $password = $_POST["password"];
+
+    $sql = "SELECT * FROM users WHERE email = '$email' AND is_admin = 1"; // Check if the user is an admin
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        // Assuming passwords are hashed in the database, use password_verify to compare
+        if (password_verify($password, $row["password"])) {
+            $_SESSION["email"] = $row["email"];
+            header("Location: admin_dashboard.php");
+            exit();
+        } else {
+            $error = "Incorrect password!";
+        }
+    } else {
+        $error = "Email not found or not an admin!";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
