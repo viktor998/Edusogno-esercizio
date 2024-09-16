@@ -1,0 +1,13 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+form {
+    margin-left: 30rem;
+    margin-top: 5rem;
+}
+
+label, input {
+    display: block;
+    margin-bottom: 5rem;
+}
